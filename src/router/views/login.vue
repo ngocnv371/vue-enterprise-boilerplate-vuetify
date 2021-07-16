@@ -56,28 +56,35 @@ export default {
 
 <template>
   <Layout>
-    <form :class="$style.form" @submit.prevent="tryToLogIn">
-      <BaseInputText
-        v-model="username"
-        name="username"
-        :placeholder="placeholders.username"
-      />
-      <BaseInputText
-        v-model="password"
-        name="password"
-        type="password"
-        :placeholder="placeholders.password"
-      />
-      <BaseButton :disabled="tryingToLogIn" type="submit">
-        <BaseIcon v-if="tryingToLogIn" name="sync" spin />
-        <span v-else>
-          Log in
-        </span>
-      </BaseButton>
-      <p v-if="authError">
-        There was an error logging in to your account.
-      </p>
-    </form>
+    <v-row align="center" justify="center">
+      <v-col>
+        <v-form ref="form" @submit.prevent="tryToLogIn">
+          <h2 class="text-center">Login</h2>
+          <v-text-field
+            v-model="username"
+            name="username"
+            :placeholder="placeholders.username"
+          />
+          <v-text-field
+            v-model="password"
+            name="password"
+            type="password"
+            :placeholder="placeholders.password"
+          />
+          <div class="text-right">
+            <v-btn :disabled="tryingToLogIn" type="submit" color="primary">
+              <v-icon v-if="tryingToLogIn" class="spin">spinner</v-icon>
+              <span v-else>
+                Log in
+              </span>
+            </v-btn>
+          </div>
+          <v-alert v-if="authError" color="error" class="mt-2">
+            There was an error logging in to your account.
+          </v-alert>
+        </v-form>
+      </v-col>
+    </v-row>
   </Layout>
 </template>
 

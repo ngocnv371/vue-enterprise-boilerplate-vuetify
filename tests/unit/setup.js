@@ -3,6 +3,9 @@ import path from 'path'
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import Vuetify from 'vuetify'
+
+Vue.use(Vuetify)
 
 // ===
 // Utility functions

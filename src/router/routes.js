@@ -4,7 +4,19 @@ export default [
   {
     path: '/',
     name: 'home',
-    component: () => lazyLoadView(import('@views/home.vue')),
+    components: {
+      default: () => lazyLoadView(import('@views/home.vue')),
+      navigation: () => lazyLoadView(import('@components/app-bar.vue')),
+    },
+    meta: {
+      beforeResolve(routeTo, routeFrom, next) {
+        if (!store.getters['auth/loggedIn']) {
+          next({ name: 'login' })
+        } else {
+          next()
+        }
+      },
+    },
   },
   {
     path: '/login',
@@ -26,16 +38,24 @@ export default [
   {
     path: '/profile',
     name: 'profile',
-    component: () => lazyLoadView(import('@views/profile.vue')),
+    components: {
+      default: () => lazyLoadView(import('@views/profile.vue')),
+      navigation: () => lazyLoadView(import('@components/app-bar.vue')),
+    },
     meta: {
       authRequired: true,
     },
-    props: (route) => ({ user: store.state.auth.currentUser || {} }),
+    props: {
+      default: (route) => ({ user: store.state.auth.currentUser || {} }),
+    },
   },
   {
     path: '/profile/:username',
     name: 'username-profile',
-    component: () => lazyLoadView(import('@views/profile.vue')),
+    components: {
+      default: () => lazyLoadView(import('@views/profile.vue')),
+      navigation: () => lazyLoadView(import('@components/app-bar.vue')),
+    },
     meta: {
       authRequired: true,
       // HACK: In order to share data between the `beforeResolve` hook
@@ -62,7 +82,9 @@ export default [
     },
     // Set the user from the route params, once it's set in the
     // beforeResolve route guard.
-    props: (route) => ({ user: route.meta.tmp.user }),
+    props: {
+      default: (route) => ({ user: route.meta.tmp.user }),
+    },
   },
   {
     path: '/logout',

@@ -1,7 +1,8 @@
-import Vue from 'vue'
 import router from '@router'
 import store from '@state/store'
+import Vue from 'vue'
 import App from './app.vue'
+import vuetify from './plugins/vuetify'
 
 // Globally register all `_base`-prefixed components
 import '@components/_globals'
@@ -16,6 +17,7 @@ if (process.env.VUE_APP_TEST === 'e2e') {
 }
 
 const app = new Vue({
+  vuetify,
   router,
   store,
   render: (h) => h(App),
