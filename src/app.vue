@@ -19,13 +19,7 @@ export default {
     <RouterView name="navigation"></RouterView>
     <NavDrawer />
     <v-main>
-      <v-container fluid fill-height>
-        <!--
-    Even when routes use the same component, treat them
-    as distinct and create the component again.
-    -->
-        <RouterView :key="$route.fullPath" />
-      </v-container>
+      <RouterView :key="$route.fullPath" />
     </v-main>
   </v-app>
 </template>

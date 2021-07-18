@@ -3,9 +3,9 @@ export default {}
 </script>
 
 <template>
-  <div class="container">
+  <v-container fluid fill-height>
     <slot />
-  </div>
+  </v-container>
 </template>
 
 <style lang="scss" module>
