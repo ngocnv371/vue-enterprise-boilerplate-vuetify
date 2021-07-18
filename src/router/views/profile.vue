@@ -26,7 +26,7 @@ export default {
 <template>
   <Layout>
     <h1>
-      <BaseIcon name="user" />
+      <v-icon>user</v-icon>
       {{ user.name }}
       Profile
     </h1>

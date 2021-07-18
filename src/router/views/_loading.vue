@@ -13,7 +13,7 @@ export default {
 <template>
   <Layout>
     <Transition appear>
-      <BaseIcon :class="$style.loadingIcon" name="sync" spin />
+      <v-icon class="fa-spin">sync</v-icon>
     </Transition>
   </Layout>
 </template>
