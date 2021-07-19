@@ -20,7 +20,7 @@ module.exports = {
     'no-console': process.env.PRE_COMMIT
       ? ['error', { allow: ['warn', 'error'] }]
       : 'off',
-    'import/no-relative-parent-imports': 'error',
+    'import/no-relative-parent-imports': 'warn',
     'import/order': 'error',
     'vue/array-bracket-spacing': 'error',
     'vue/arrow-spacing': 'error',
